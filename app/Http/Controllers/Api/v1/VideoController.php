@@ -27,8 +27,8 @@ class VideoController extends Controller
     /**
      * Display the specified video.
      *
-     * @param  \App\Models\Video $video
-     * @param  \App\Http\Requests\Api\v1\Video\ShowVideo $request
+     * @param  \App\Models\Video  $video
+     * @param  \App\Http\Requests\Api\v1\Video\ShowVideo  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +40,7 @@ class VideoController extends Controller
     /**
      * Store a newly created video in storage.
      *
-     * @param  \App\Http\Requests\Api\v1\Video\StoreVideo $request
+     * @param  \App\Http\Requests\Api\v1\Video\StoreVideo  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -56,8 +56,8 @@ class VideoController extends Controller
     /**
      * Update the specified video in storage.
      *
-     * @param  \App\Models\Video $video
-     * @param  \App\Http\Requests\Api\v1\Video\UpdateVideo $request
+     * @param  \App\Models\Video  $video
+     * @param  \App\Http\Requests\Api\v1\Video\UpdateVideo  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -78,8 +78,8 @@ class VideoController extends Controller
     /**
      * Remove the specified video from storage.
      *
-     * @param  \App\Models\Video $video
-     * @param  \App\Http\Requests\Api\v1\Video\DestroyVideo $request
+     * @param  \App\Models\Video  $video
+     * @param  \App\Http\Requests\Api\v1\Video\DestroyVideo  $request
      *
      * @return \Illuminate\Http\Response
      */
