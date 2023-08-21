@@ -29,6 +29,8 @@ class Token
     }
 
     /**
+     * Returns an Interval equal to this API's configured Token TTL.
+     *
      * @return \Carbon\CarbonInterval
      */
     static public function ttl(): \Carbon\CarbonInterval
