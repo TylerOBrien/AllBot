@@ -1,0 +1,133 @@
+<?php
+
+namespace App\Policies\Api\v1;
+
+use App\Models\{ DummyModel, Family, User };
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class DummyClassPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function index(User $user)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('index', DummyClass::class);
+    }
+
+    /**
+     * Determine whether the user can view the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyClass  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function show(User $user, DummyClass $DummyBinding)
+    {
+        if ($DummyBinding->owner_type === User::class) {
+            if ($user->id === $DummyBinding->owner_id) {
+                return true;
+            }
+        } else if ($DummyBinding->owner_type === Family::class) {
+            if ($user->family_id === $DummyBinding->owner_id) {
+                return true;
+            }
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        if ($DummyBinding->owner && $user->can('show', $DummyBinding->owner)) {
+            return true;
+        }
+
+        return $user->hasAbility('show', DummyClass::class);
+    }
+
+    /**
+     * Determine whether the user can create DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function store(User $user)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyClass  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function update(User $user, DummyClass $DummyBinding)
+    {
+        if ($DummyBinding->owner_type === User::class) {
+            if ($user->id === $DummyBinding->owner_id) {
+                return true;
+            }
+        } else if ($DummyBinding->owner_type === Family::class) {
+            if ($user->family_id === $DummyBinding->owner_id) {
+                return true;
+            }
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        if ($DummyBinding->owner && $user->can('update', $DummyBinding->owner)) {
+            return true;
+        }
+
+        return $user->hasAbility('update', DummyClass::class);
+    }
+
+    /**
+     * Determine whether the user can delete the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyClass  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, DummyClass $DummyBinding)
+    {
+        if ($DummyBinding->owner_type === User::class) {
+            if ($user->id === $DummyBinding->owner_id) {
+                return true;
+            }
+        } else if ($DummyBinding->owner_type === Family::class) {
+            if ($user->family_id === $DummyBinding->owner_id) {
+                return true;
+            }
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        if ($DummyBinding->owner && $user->can('destroy', $DummyBinding->owner)) {
+            return true;
+        }
+
+        return $user->hasAbility('destroy', DummyClass::class);
+    }
+}

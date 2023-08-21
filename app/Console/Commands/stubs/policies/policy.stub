@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Policies\Api\v1;
+
+use App\Models\{ DummyModel, User };
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class DummyPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function index(User $user)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('index', DummyModel::class);
+    }
+
+    /**
+     * Determine whether the user can view the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function show(User $user, DummyModel $DummyBinding)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('show', DummyModel::class, $DummyBinding->id);
+    }
+
+    /**
+     * Determine whether the user can create DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function store(User $user)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('store', DummyModel::class);
+    }
+
+    /**
+     * Determine whether the user can update the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function update(User $user, DummyModel $DummyBinding)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('update', DummyModel::class, $DummyBinding->id);
+    }
+
+    /**
+     * Determine whether the user can delete the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, DummyModel $DummyBinding)
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return $user->hasAbility('destroy', DummyModel::class, $DummyBinding->id);
+    }
+}
