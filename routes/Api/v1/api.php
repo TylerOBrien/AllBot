@@ -10,7 +10,7 @@ Route::post('identities/verifications', VerifyIdentityController::class);
 Route::apiResource('images', ImageController::class);
 Route::post('recoveries', ForgotPasswordController::class);
 Route::post('recoveries/verifications', VerifyRecoveryController::class);
-Route::get('social-media-providers', [ SocialMediaProviderController::class, 'index' ]);
+Route::get('social-media-providers', [SocialMediaProviderController::class, 'index']);
 Route::apiResource('sounds', SoundController::class);
 Route::post('tokens', LoginController::class);
 Route::apiResource('users', UserController::class);
