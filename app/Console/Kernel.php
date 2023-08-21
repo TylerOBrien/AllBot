@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use App\Jobs\{ CheckIfRunsReady, SyncGames, SyncPlayers, SyncRuns };
-
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,17 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new CheckIfRunsReady)
-                 ->everyFifteenMinutes();
-
-        $job = match (config('app.hostname')) {
-            'srcgames' => new SyncGames,
-            'srcplayers' => new SyncPlayers,
-            'srcruns' => new SyncRuns,
-        };
-
-        $schedule->job($job)
-                 ->everyFifteenMinutes();
+        //
     }
 
     /**
