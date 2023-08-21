@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api\v1\Sound;
 use App\Http\Requests\Api\v1\ApiRequest;
 use App\Models\Sound;
 
-class DestroyVideo extends ApiRequest
+class DestroySound extends ApiRequest
 {
     /**
      * Instantiate the request.
