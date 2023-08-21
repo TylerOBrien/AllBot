@@ -2,7 +2,7 @@
 
 namespace App\Policies\Api\v1;
 
-use App\Models\{ DummyModel, Family, User };
+use App\Models\{ DummyModel, User };
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -36,14 +36,8 @@ class DummyClassPolicy
      */
     public function show(User $user, DummyClass $DummyBinding)
     {
-        if ($DummyBinding->owner_type === User::class) {
-            if ($user->id === $DummyBinding->owner_id) {
-                return true;
-            }
-        } else if ($DummyBinding->owner_type === Family::class) {
-            if ($user->family_id === $DummyBinding->owner_id) {
-                return true;
-            }
+        if ($DummyBinding->owner_type === User::class && $user->id === $DummyBinding->owner_id) {
+            return true;
         }
 
         if ($user->is_admin) {
@@ -79,14 +73,8 @@ class DummyClassPolicy
      */
     public function update(User $user, DummyClass $DummyBinding)
     {
-        if ($DummyBinding->owner_type === User::class) {
-            if ($user->id === $DummyBinding->owner_id) {
-                return true;
-            }
-        } else if ($DummyBinding->owner_type === Family::class) {
-            if ($user->family_id === $DummyBinding->owner_id) {
-                return true;
-            }
+        if ($DummyBinding->owner_type === User::class && $user->id === $DummyBinding->owner_id) {
+            return true;
         }
 
         if ($user->is_admin) {
@@ -110,14 +98,8 @@ class DummyClassPolicy
      */
     public function destroy(User $user, DummyClass $DummyBinding)
     {
-        if ($DummyBinding->owner_type === User::class) {
-            if ($user->id === $DummyBinding->owner_id) {
-                return true;
-            }
-        } else if ($DummyBinding->owner_type === Family::class) {
-            if ($user->family_id === $DummyBinding->owner_id) {
-                return true;
-            }
+        if ($DummyBinding->owner_type === User::class && $user->id === $DummyBinding->owner_id) {
+            return true;
         }
 
         if ($user->is_admin) {
