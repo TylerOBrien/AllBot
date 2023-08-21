@@ -7,6 +7,7 @@ use App\Traits\Models\HasAccords;
 use App\Traits\Models\HasFiles;
 use App\Traits\Models\HasImages;
 use App\Traits\Models\HasMediaAccords;
+use App\Traits\Models\HasSounds;
 use App\Traits\Models\HasVideos;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasImages, HasVideos, HasFiles, HasAccords, HasMediaAccords;
+    use Notifiable, HasImages, HasVideos, HasSounds, HasFiles, HasAccords, HasMediaAccords;
 
     /*
     |--------------------------------------------------------------------------
