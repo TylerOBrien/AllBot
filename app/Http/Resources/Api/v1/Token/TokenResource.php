@@ -30,10 +30,12 @@ class TokenResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'value' => $this->pat->id . '|' . $this->plaintext,
-            'ttl' => config('api.bearer.ttl'),
-            'ttl_type' => 'minute',
-            'created_at' => $this->pat->created_at,
+            'data' => [
+                'value' => $this->pat->id . '|' . $this->plaintext,
+                'ttl' => config('api.bearer.ttl'),
+                'ttl_type' => 'minute',
+                'created_at' => $this->pat->created_at,
+            ],
         ];
     }
 }
