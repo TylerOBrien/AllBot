@@ -28,6 +28,15 @@ class Channel extends Model
     */
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function commands()
+    {
+        return $this->belongsToMany(Command::class)
+                    ->using(ChannelCommand::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function owner()
