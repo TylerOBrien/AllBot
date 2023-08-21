@@ -22,7 +22,7 @@ class MakeRequests extends Command
     protected $description = 'Create multiple requests.';
 
     /**
-     * @return int
+     * @return bool|null
      */
     public function handle()
     {
@@ -31,7 +31,5 @@ class MakeRequests extends Command
         foreach (explode(',', $this->option('ability')) as $ability) {
             Artisan::call('make:croft-request', ['name' => $name, '--ability' => $ability]);
         }
-
-        return 0;
     }
 }
