@@ -76,7 +76,7 @@ class Sound extends Model
      * @param  \Illuminate\Http\UploadedFile  $file  The file uploaded by a user.
      * @param  array  $fields  The attributes passed to the create function, typically coming from a request.
      *
-     * @return \App\Models\Video
+     * @return \App\Models\Sound
      */
     static public function createFromFile(UploadedFile $file, array $fields)
     {
