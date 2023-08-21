@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\v1\Video\{ IndexVideo, ShowVideo, StoreVideo, UpdateVideo, DestroyVideo };
-use App\Http\Resources\Api\v1\Video\VideoIndexResource;
+use App\Http\Resources\Api\v1\Video\{ VideoIndexResource, VideoResource };
 use App\Models\Video;
 
 class VideoController extends Controller
@@ -34,7 +34,7 @@ class VideoController extends Controller
      */
     public function show(Video $video, ShowVideo $request)
     {
-        return $video;
+        return response(new VideoResource($video));
     }
 
     /**
@@ -48,8 +48,9 @@ class VideoController extends Controller
     {
         $fields = $request->validated();
         $given = $request->file('video');
+        $video = Video::createFromFile($given, $fields);
 
-        return Video::createFromFile($given, $fields);
+        return response(new VideoResource($video), 201);
     }
 
     /**
@@ -71,7 +72,7 @@ class VideoController extends Controller
             $video->fill($fields)->save();
         }
 
-        return $video;
+        return response(new VideoResource($video));
     }
 
     /**
