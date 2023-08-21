@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Api\v1\Video;
+namespace App\Http\Resources\Api\v1\Sound;
 
 use App\Models\Sound;
 
