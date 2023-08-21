@@ -12,6 +12,8 @@ class CredentialsSchema extends Schema
     const IDENTITY_AND_SECRET = 0xFF;
     const IDENTITY_ONLY = 0x0F;
     const SECRET_ONLY = 0xF0;
+    const REGISTER = 0xF00;
+    const LOGIN = 0xF000;
 
     /**
      * Instantiates this schema.
